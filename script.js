@@ -68,12 +68,20 @@ const malla = {
       correlativas: ["Pedagogía"]
     },
     "Tecnologías de la Información y la Comunicación I": {
-      estado: "bloqueada",
+      estado: "habilitada",
       correlativas: []
     },
     "Software Ofimático II": {
       estado: "bloqueada",
       correlativas: ["Software Ofimático I"]
+    },
+    "Aplicaciones de internet": {
+      estado: "bloqueada",
+      correlativas: ["Sistemas Operativos", "Arquitectura de Ordenadores Personales"]
+       },
+    "Psicología Educacional": {
+      estado: "bloqueada",
+      correlativas: ["Pedagogía"]
     }
   }
 };
