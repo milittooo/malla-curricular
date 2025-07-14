@@ -77,3 +77,57 @@ const malla = {
     }
   }
 };
+const estados = ["bloqueada", "habilitada", "aprobada"];
+
+const contenedor = document.getElementById("malla");
+
+function renderMalla() {
+  contenedor.innerHTML = "";
+
+  for (const [anio, materias] of Object.entries(malla)) {
+    const titulo = document.createElement("h2");
+    titulo.textContent = anio;
+    contenedor.appendChild(titulo);
+
+    const grupo = document.createElement("div");
+    grupo.style.display = "grid";
+    grupo.style.gridTemplateColumns = "repeat(auto-fit, minmax(180px, 1fr))";
+    grupo.style.gap = "1rem";
+
+    for (const [nombre, datos] of Object.entries(materias)) {
+      const div = document.createElement("div");
+      div.className = `materia ${datos.estado}`;
+      div.textContent = nombre;
+
+      if (datos.estado === "habilitada") {
+        div.onclick = () => {
+          datos.estado = "aprobada";
+          actualizarCorrelativas();
+          renderMalla();
+        };
+      }
+
+      grupo.appendChild(div);
+    }
+
+    contenedor.appendChild(grupo);
+  }
+}
+
+function actualizarCorrelativas() {
+  for (const [anio, materias] of Object.entries(malla)) {
+    for (const [nombre, datos] of Object.entries(materias)) {
+      if (datos.estado === "bloqueada") {
+        const desbloqueada = datos.correlativas.every((req) =>
+          Object.values(malla).some((grupo) => grupo[req]?.estado === "aprobada")
+        );
+
+        if (desbloqueada) {
+          datos.estado = "habilitada";
+        }
+      }
+    }
+  }
+}
+
+renderMalla();
