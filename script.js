@@ -1,27 +1,61 @@
-const materias = [
-  { nombre: "Matemática I", estado: "aprobada" },
-  { nombre: "Historia TIC", estado: "aprobada" },
-  { nombre: "Sistemas Operativos", estado: "cursando" },
-  { nombre: "Filosofía", estado: "pendiente" },
-  { nombre: "Pedagogía", estado: "pendiente" },
-];
-
-const estados = ["pendiente", "cursando", "aprobada", "trauma"];
-
-const contenedor = document.getElementById("malla");
-
-materias.forEach((materia, i) => {
-  const div = document.createElement("div");
-  div.textContent = materia.nombre;
-  div.classList.add("materia", materia.estado);
-  
-  div.onclick = () => {
-    const actual = estados.indexOf(materia.estado);
-    const siguiente = (actual + 1) % estados.length;
-    materia.estado = estados[siguiente];
-
-    div.className = "materia " + materia.estado;
-  };
-
-  contenedor.appendChild(div);
-});
+const malla = {
+  "1er Año": {
+const materias = {
+  "Arquitectura de ordenadores personales": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: []
+      "Comunicación I": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: []
+      "Filosofía": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: []
+      "Pedagogía": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: []
+      "Práctica I": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: []
+      "Sistemas Operativos": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: []
+        "Taller de Aprendizaje Basado en Problemas": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: []
+        "Taller de Oralidad, Lectura y Escritura": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: []
+        "Teología I": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: []
+          "Software Ofimático I": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: []  
+        }
+  },
+  "2do Año": {
+       "Comunicación II": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: ["Sistemas Operativos", "Comunicación I" ]  
+        "Didáctica General": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: ["Pedagogía"] 
+        "Teología II": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: [] 
+        "Lógica y Programación": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: ["Sistemas Operativos"] 
+          "Práctica II": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: ["Práctica I"] 
+          "Sujetos del Aprendizaje": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: ["Pedagogía"] 
+          "Tecnologías de la Información y la Comunicación I": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: [] 
+          "Software Ofimático II": {
+    estado: "habilitada", // "bloqueada", "habilitada", "aprobada"
+    correlativas: [Software Ofimático I] 
+    correlativas: ["Práctica I"] 
