@@ -52,7 +52,7 @@ const malla = {
       correlativas: ["Pedagogía"]
     },
     "Teología II": {
-      estado: "bloqueada",
+      estado: "habilitada",
       correlativas: []
     },
     "Lógica y Programación": {
