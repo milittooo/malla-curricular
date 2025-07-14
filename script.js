@@ -111,6 +111,15 @@ function renderMalla() {
         div.onclick = () => {
           datos.estado = "aprobada";
           actualizarCorrelativas();
+          function inicializarMalla() {
+  for (const [anio, materias] of Object.entries(malla)) {
+    for (const [nombre, datos] of Object.entries(materias)) {
+      if (datos.correlativas.length === 0 && datos.estado === "bloqueada") {
+        datos.estado = "habilitada";
+      }
+    }
+  }
+}
           renderMalla();
         };
       }
@@ -138,4 +147,6 @@ function actualizarCorrelativas() {
   }
 }
 
+inicializarMalla();
+renderMalla();
 renderMalla();
