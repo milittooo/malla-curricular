@@ -12,42 +12,19 @@ const malla = {
     "Software Ofimático I": { estado: "habilitada", correlativas: [] }
   },
   "2do Año": {
-    "Comunicación II": {
-      estado: "bloqueada",
-      correlativas: ["Sistemas Operativos", "Comunicación I"]
-    },
-    "Didáctica General": {
-      estado: "bloqueada",
-      correlativas: ["Pedagogía"]
-    },
-    "Teología II": {
-      estado: "bloqueada",
-      correlativas: []
-    },
-    "Lógica y Programación": {
-      estado: "bloqueada",
-      correlativas: ["Sistemas Operativos"]
-       },
-    "Sujetos del Aprendizaje": {
-      estado: "bloqueada",
-      correlativas: ["Pedagogía"]
-    },
-    "Tecnologías de la Información y la Comunicación I": {
-      estado: "bloqueada",
-      correlativas: []
-    },
-    "Software Ofimático II": {
-      estado: "bloqueada",
-      correlativas: ["Software Ofimático I"]
-    },
+    "Comunicación II": { estado: "bloqueada", correlativas: ["Sistemas Operativos", "Comunicación I"] },
+    "Didáctica General": { estado: "bloqueada", correlativas: ["Pedagogía"] },
+    "Teología II": { estado: "bloqueada", correlativas: [] },
+    "Lógica y Programación": { estado: "bloqueada", correlativas: ["Sistemas Operativos"] },
+    "Práctica II": { estado: "bloqueada", correlativas: ["Práctica I"] },
+    "Sujetos del Aprendizaje": { estado: "bloqueada", correlativas: ["Pedagogía"] },
+    "Tecnologías de la Información y la Comunicación I": { estado: "bloqueada", correlativas: [] },
+    "Software Ofimático II": { estado: "bloqueada", correlativas: ["Software Ofimático I"] },
     "Aplicaciones de internet": {
       estado: "bloqueada",
       correlativas: ["Sistemas Operativos", "Arquitectura de ordenadores personales"]
     },
-    "Psicología Educacional": {
-      estado: "bloqueada",
-      correlativas: ["Pedagogía"]
-    }
+    "Psicología Educacional": { estado: "bloqueada", correlativas: ["Pedagogía"] }
   }
 };
 
@@ -104,7 +81,6 @@ function actualizarCorrelativas() {
         const desbloqueada = datos.correlativas.every((req) =>
           Object.values(malla).some((grupo) => grupo[req]?.estado === "aprobada")
         );
-
         if (desbloqueada) {
           datos.estado = "habilitada";
         }
@@ -113,5 +89,6 @@ function actualizarCorrelativas() {
   }
 }
 
+// Ejecutamos primero la inicialización
 inicializarMalla();
 renderMalla();
