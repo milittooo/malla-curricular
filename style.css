@@ -1,7 +1,14 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
 .materia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
   padding: 1rem;
   border-radius: 10px;
-  text-align: center;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
