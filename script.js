@@ -1,47 +1,16 @@
 const malla = {
   "1er Año": {
-    "Arquitectura de ordenadores personales": {
-      estado: "habilitada",
-      correlativas: []
-    },
-    "Comunicación I": {
-      estado: "habilitada",
-      correlativas: []
-    },
-    "Filosofía": {
-      estado: "habilitada",
-      correlativas: []
-    },
-    "Pedagogía": {
-      estado: "habilitada",
-      correlativas: []
-    },
-    "Práctica I": {
-      estado: "habilitada",
-      correlativas: []
-    },
-    "Sistemas Operativos": {
-      estado: "habilitada",
-      correlativas: []
-    },
-    "Taller de Aprendizaje Basado en Problemas": {
-      estado: "habilitada",
-      correlativas: []
-    },
-    "Taller de Oralidad, Lectura y Escritura": {
-      estado: "habilitada",
-      correlativas: []
-    },
-    "Teología I": {
-      estado: "habilitada",
-      correlativas: []
-    },
-    "Software Ofimático I": {
-      estado: "habilitada",
-      correlativas: []
-    }
+    "Arquitectura de ordenadores personales": { estado: "habilitada", correlativas: [] },
+    "Comunicación I": { estado: "habilitada", correlativas: [] },
+    "Filosofía": { estado: "habilitada", correlativas: [] },
+    "Pedagogía": { estado: "habilitada", correlativas: [] },
+    "Práctica I": { estado: "habilitada", correlativas: [] },
+    "Sistemas Operativos": { estado: "habilitada", correlativas: [] },
+    "Taller de Aprendizaje Basado en Problemas": { estado: "habilitada", correlativas: [] },
+    "Taller de Oralidad, Lectura y Escritura": { estado: "habilitada", correlativas: [] },
+    "Teología I": { estado: "habilitada", correlativas: [] },
+    "Software Ofimático I": { estado: "habilitada", correlativas: [] }
   },
-
   "2do Año": {
     "Comunicación II": {
       estado: "bloqueada",
@@ -52,23 +21,19 @@ const malla = {
       correlativas: ["Pedagogía"]
     },
     "Teología II": {
-      estado: "habilitada",
+      estado: "bloqueada",
       correlativas: []
     },
     "Lógica y Programación": {
       estado: "bloqueada",
       correlativas: ["Sistemas Operativos"]
-    },
-    "Práctica II": {
-      estado: "bloqueada",
-      correlativas: ["Práctica I"]
-    },
+       },
     "Sujetos del Aprendizaje": {
       estado: "bloqueada",
       correlativas: ["Pedagogía"]
     },
     "Tecnologías de la Información y la Comunicación I": {
-      estado: "habilitada",
+      estado: "bloqueada",
       correlativas: []
     },
     "Software Ofimático II": {
@@ -77,17 +42,27 @@ const malla = {
     },
     "Aplicaciones de internet": {
       estado: "bloqueada",
-      correlativas: ["Sistemas Operativos", "Arquitectura de Ordenadores Personales"]
-       },
+      correlativas: ["Sistemas Operativos", "Arquitectura de ordenadores personales"]
+    },
     "Psicología Educacional": {
       estado: "bloqueada",
       correlativas: ["Pedagogía"]
     }
   }
 };
-const estados = ["bloqueada", "habilitada", "aprobada"];
 
+const estados = ["bloqueada", "habilitada", "aprobada"];
 const contenedor = document.getElementById("malla");
+
+function inicializarMalla() {
+  for (const [anio, materias] of Object.entries(malla)) {
+    for (const [nombre, datos] of Object.entries(materias)) {
+      if (datos.correlativas.length === 0 && datos.estado === "bloqueada") {
+        datos.estado = "habilitada";
+      }
+    }
+  }
+}
 
 function renderMalla() {
   contenedor.innerHTML = "";
@@ -111,15 +86,6 @@ function renderMalla() {
         div.onclick = () => {
           datos.estado = "aprobada";
           actualizarCorrelativas();
-          function inicializarMalla() {
-  for (const [anio, materias] of Object.entries(malla)) {
-    for (const [nombre, datos] of Object.entries(materias)) {
-      if (datos.correlativas.length === 0 && datos.estado === "bloqueada") {
-        datos.estado = "habilitada";
-      }
-    }
-  }
-}
           renderMalla();
         };
       }
@@ -148,5 +114,4 @@ function actualizarCorrelativas() {
 }
 
 inicializarMalla();
-renderMalla();
 renderMalla();
