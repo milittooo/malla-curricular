@@ -13,7 +13,7 @@
 }
 
 .habilitada {
-  background-color: ##045cec;
+  background-color: #045cec;
   color: #000;
 }
 
@@ -22,3 +22,8 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+.materia:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
